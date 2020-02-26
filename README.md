@@ -21,8 +21,10 @@ Task after adding atleast 7 points in a BioData file:
 5. You can write details about the schema in a seperate file and branch and raise it's PR as well.
 
 ### 3. File Compression Assignment for regex, ruby hashes
-A File compression algorithm generates following imperfect compression string
+1. A File compression algorithm generates following imperfect compression string
 - x1a5b123b9c10c7c4d15x14a12 <-- Imperfect compression string
 - a17b132c21d15x15 <-- Perfect compression string
 
 Generate perfect compression string by accepting Imperfect compression string. Perfect string contains unique sorted characters whose number of occurences are summed up.
+
+2. Write regex to match with valid mobile number, email, IP address and URL for practice
