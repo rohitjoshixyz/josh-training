@@ -5,10 +5,18 @@ class Member
     @name = name
     @status = "No book taken"
   end
+
+  def book_taken?
+    if @status == "No book taken"
+      return false
+    else
+      return true
+    end
+  end
 end
 
 class Book
-  attr_accessor :name, :issued_to, :status
+  attr_accessor :name, :issued_to, :status, :message
 
   def initialize(name)
     @name = name
@@ -16,30 +24,40 @@ class Book
   end
 
   def issue_to_member(member)
-    if (@issued_to.nil?() || @status == "Available")
-      if (member.status == "No book taken")
+    if (@issued_to.nil? || book_available?)
+      if (!member.book_taken?)
         member.status = "Book taken"
         @issued_to = member
         @status = "Not Available"
-        puts "#{@name} issued to #{member.name}"
+        @message = "#{@name} issued to #{member.name}"
       else
-        puts "Please return earlier borrowed book first"
+        @message = "Please return earlier borrowed book first"
       end
     else
-      puts "Sorry, #{@name} is not available. Please try another book"
+      @message = "Sorry, #{@name} is not available. Please try another book"
     end
+    return @message
   end
 
   def process_return(member)
-    if (@issued_to.nil?())
-      puts "Sorry, this book wasn't borrowed from the library"
+    if (@issued_to.nil?)
+      @message = "Sorry, this book wasn't borrowed from the library"
       
-    elsif (@issued_to.name != member.name || member.status == "Not taken" || @status == "Available")
-      puts "Cannot process return. This book was not borrowed by you"
+    elsif (@issued_to.name != member.name || !member.book_taken? || book_available?)
+      @message = "Cannot process return. This book was not borrowed by you"
     else
       @status = "Available"
       @issued_to.status = "No book taken"
-      puts "#{@name} returned by #{member.name}"
+      @message = "#{@name} returned by #{member.name}"
+    end
+    return @message
+  end
+
+  def book_available?
+    if @status == "New Book" || @status == "Available"
+      return true
+    else
+      return false
     end
   end
 end
@@ -47,7 +65,7 @@ end
 class Library
   attr_accessor :member_list, :book_list
 
-  def initialize()
+  def initialize
     @book_list = []
     @member_list = []
   end
@@ -77,7 +95,7 @@ class Library
     puts "Name of Book      Issue Status"
     puts "-----------------------------------------------"
     @book_list.each_with_index do |book, i|
-      issue_status = (book.issued_to.nil?() || book.status == "Available" ? book.status : book.issued_to.name)
+      issue_status = (book.issued_to.nil? || book.status == "Available" ? book.status : book.issued_to.name)
       puts (i + 1).to_s + ". " + book.name + "      " + issue_status
     end
   end
@@ -112,7 +130,7 @@ while choice != "4"
     puts "Enter book number to be borrowed: "
     vishwas_library.print_books()
     book_number = gets.chomp.to_i - 1
-    vishwas_library.book_list[book_number].issue_to_member(vishwas_library.member_list[member_number])
+    puts vishwas_library.book_list[book_number].issue_to_member(vishwas_library.member_list[member_number])
   when "3"
     puts "Enter member number who wants to return: "
     vishwas_library.print_members()
@@ -120,6 +138,6 @@ while choice != "4"
     puts "Enter book number to be returned: "
     vishwas_library.print_books()
     book_number = gets.chomp.to_i - 1
-    vishwas_library.book_list[book_number].process_return(vishwas_library.member_list[member_number])
+    puts vishwas_library.book_list[book_number].process_return(vishwas_library.member_list[member_number])
   end
 end
