@@ -8,9 +8,9 @@ class Member
 
   def book_taken?
     if @status == "No book taken"
-      return false
+      false
     else
-      return true
+      true
     end
   end
 end
@@ -25,7 +25,7 @@ class Book
 
   def issue_to_member(member)
     if (@issued_to.nil? || book_available?)
-      if (!member.book_taken?)
+      unless (member.book_taken?)
         member.status = "Book taken"
         @issued_to = member
         @status = "Not Available"
@@ -36,7 +36,6 @@ class Book
     else
       @message = "Sorry, #{@name} is not available. Please try another book"
     end
-    return @message
   end
 
   def process_return(member)
@@ -50,14 +49,13 @@ class Book
       @issued_to.status = "No book taken"
       @message = "#{@name} returned by #{member.name}"
     end
-    return @message
   end
 
   def book_available?
     if @status == "New Book" || @status == "Available"
-      return true
+      true
     else
-      return false
+      false
     end
   end
 end
@@ -82,11 +80,11 @@ class Library
     end
   end
 
-  def print_members()
+  def print_members
     @member_list.each_with_index { |member, i| puts (i+1).to_s + ". " + member.name}
   end
 
-  def print_books()
+  def print_books
     @book_list.each_with_index { |book, i| puts (i+1).to_s + ". " + book.name}
   end
 
@@ -96,7 +94,7 @@ class Library
     puts "-----------------------------------------------"
     @book_list.each_with_index do |book, i|
       issue_status = (book.issued_to.nil? || book.status == "Available" ? book.status : book.issued_to.name)
-      puts (i + 1).to_s + ". " + book.name + "      " + issue_status
+      puts "#{i + 1}. #{book.name}      #{issue_status}"
     end
   end
 end
@@ -108,7 +106,7 @@ vishwas_library = Library.new
 vishwas_library.populate_books(book_list)
 vishwas_library.populate_members(member_list)
 
-vishwas_library.show_library_status()
+vishwas_library.show_library_status
 
 choice = ""
 while choice != "4"
@@ -122,21 +120,21 @@ while choice != "4"
 
   case choice
   when "1"
-    vishwas_library.show_library_status()
+    vishwas_library.show_library_status
   when "2"
     puts "Enter member number who wants to borrow: "
-    vishwas_library.print_members()
+    vishwas_library.print_members
     member_number = gets.chomp.to_i - 1
     puts "Enter book number to be borrowed: "
-    vishwas_library.print_books()
+    vishwas_library.print_books
     book_number = gets.chomp.to_i - 1
     puts vishwas_library.book_list[book_number].issue_to_member(vishwas_library.member_list[member_number])
   when "3"
     puts "Enter member number who wants to return: "
-    vishwas_library.print_members()
+    vishwas_library.print_members
     member_number = gets.chomp.to_i - 1
     puts "Enter book number to be returned: "
-    vishwas_library.print_books()
+    vishwas_library.print_books
     book_number = gets.chomp.to_i - 1
     puts vishwas_library.book_list[book_number].process_return(vishwas_library.member_list[member_number])
   end
