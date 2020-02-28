@@ -28,3 +28,12 @@ Task after adding atleast 7 points in a BioData file:
 Generate perfect compression string by accepting Imperfect compression string. Perfect string contains unique sorted characters whose number of occurences are summed up.
 
 2. Write regex to match with valid mobile number, email, IP address and URL for practice
+
+### 4. Library System Assignment for Classes and Objects in Ruby
+1. Design a library management system that has the following constraints:
+  1. One Member can borrow only one book at a time.
+  2. There is only one copy of each book in the library.
+  
+ You should include classes like `Book`, `Member`, `Library` and implement basic functionality of `borrow_book()`, `return_book()`, `check_library_status()`.
+
+2. Read [RubyDocs](https://ruby-doc.org/stdlib-2.7.0/), [Ruby Style Guide](https://github.com/rubocop-hq/ruby-style-guide) and about `self` keyword usage in different scopes. Also read about `mutablity` in Ruby
