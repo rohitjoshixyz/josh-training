@@ -37,3 +37,11 @@ Design a library management system that has the following constraints:
  You should include classes like `Book`, `Member`, `Library` and implement basic functionality of `borrow_book()`, `return_book()`, `check_library_status()`.
 
 Read [RubyDocs](https://ruby-doc.org/stdlib-2.7.0/), [Ruby Style Guide](https://github.com/rubocop-hq/ruby-style-guide) and about `self` keyword usage in different scopes. Also read about `mutablity` in Ruby
+
+### 5. Blocks, Procs and Lambdas
+The Assignment 1: [Exponentor](https://github.com/rohitjoshixyz/josh-training/blob/master/01_exponentor.rb) is an example of using lambda.
+
+Demonstrate the use of Blocks, Procs and Lambdas in Ruby.
+
+Read more about [Blocks, Procs and Lambdas](https://www.rubyguides.com/2016/02/ruby-procs-and-lambdas/)
+ 
