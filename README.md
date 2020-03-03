@@ -58,3 +58,13 @@ Design a Property management system through which we can buy, rent a property or
 Modules have special class methods called `hooks` that are invoked at certain events such as `include`, `extend`, `prepend` named as `self.included(base)` which accept one parameter `base` that contains the class name that includes that particular module.
 
 Multiple methods with same name or a specific module method can be resolve using scope resolution operator `::` such as `Walk::Human`where `Walk` is the module name and `Human` is the method name
+
+### 7. Inheritance in Ruby - Bank Management System
+
+Develop a Banking System in which customer can open his/her account. Use `inheritance` and `modules`
+
+  1. The account has the functionality of `deposit()`, `withdraw()` and `get_balance`. 
+     The account is identified by `account_number`
+  2. There are two kinds of account; `CurrentAccount` and `SavingsAccount`.
+  3. Each kind of accounts will have different `rate of interest`.
+  4. Accept `month` from user and show total amount.
