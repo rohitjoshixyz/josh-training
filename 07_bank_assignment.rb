@@ -38,7 +38,7 @@ class CurrentAccount < Account
   include BankCalculations
 
   def initialize(account_number, balance)
-    super(account_number, "Savings", balance)
+    super(account_number, "Current", balance)
   end
   
   def credit_interest(months)
