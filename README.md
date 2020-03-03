@@ -44,4 +44,17 @@ The Assignment 1: [Exponentor](https://github.com/rohitjoshixyz/josh-training/bl
 Demonstrate the use of Blocks, Procs and Lambdas in Ruby.
 
 Read more about [Blocks, Procs and Lambdas](https://www.rubyguides.com/2016/02/ruby-procs-and-lambdas/)
- 
+
+### 6. Modules in Ruby - Real estate management
+
+Design a Property management system through which we can buy, rent a property or book a hotel room. Use `modules` for the same.
+
+`include` will include all methods defined in it as instance methods
+
+`extend` will include all methods as class methods
+
+`prepend` will include and give priority to the included methods in method lookup
+
+Modules have special class methods called `hooks` that are invoked at certain events such as `include`, `extend`, `prepend` named as `self.included(base)` which accept one parameter `base` that contains the class name that includes that particular module.
+
+Multiple methods with same name or a specific module method can be resolve using scope resolution operator `::` such as `Walk::Human`where `Walk` is the module name and `Human` is the method name
